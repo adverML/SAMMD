@@ -25,6 +25,7 @@ CUDA: 10.1
 As conda environment: 
 
 ```bash
+# conda list --export > requirements.txt
 conda create --name <env> --file requirements.txt
 conda activate <env>
 ```
