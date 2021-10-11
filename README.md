@@ -21,6 +21,9 @@ Python: 3.7.3
 
 CUDA: 10.1  
 
+
+As conda environment: 
+
 ```bash
 conda env create -f environment.yml
 conda activate sammdcuda10
