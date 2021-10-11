@@ -165,7 +165,7 @@ if __name__ == "__main__":
                     print('The test classification accuracy is：%.3f%%' % (100 * correct / total))
                     acc = 100. * correct / total
                     # Write the results of each test in real time to acc.txt file
-                    print('Saving model......')
+                    print('Saving model...')
                     torch.save(net.state_dict(), '%s/net_%03d.pth' % (args.outf, epoch + 1))
                     f.write("EPOCH=%03d,Accuracy= %.3f%%" % (epoch + 1, acc))
                     f.write('\n')
