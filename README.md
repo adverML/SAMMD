@@ -25,8 +25,8 @@ CUDA: 10.1
 As conda environment: 
 
 ```bash
-conda env create -f environment.yml
-conda activate sammdcuda10
+conda create --name <env> --file requirements.txt
+conda activate <env>
 ```
 
 
