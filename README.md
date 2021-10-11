@@ -39,11 +39,13 @@ The CIFAR-10 dataset and the SVHN dataset can be downloaded via Pytorch.
 
 1) run
 ```
+cd adv
 python train_model.py
 ```
 
 2) run  
 ```
+cd adv
 python adv_generator.py  
 ```
 you can obtain adversarial data by FGSM, BIM, PGD and CW attack method.
