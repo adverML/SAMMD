@@ -105,9 +105,13 @@ testloader = torch.utils.data.DataLoader(testset, batch_size=128, shuffle=False,
 if __name__ == "__main__":
     # define-ResNetpz
     #net = ResNet34().to(device)
-    net = ResNet18().to(device)
+    print("Load Model!")
+    # net = ResNet18().to(device)
+    net = ResNet18().cuda()
+
 
     # Define loss functions and optimizations
+    print("Load CE!")
     criterion = nn.CrossEntropyLoss()  
     optimizer = optim.SGD(net.parameters(), lr=LR, momentum=0.9, weight_decay=5e-4) 
 
@@ -115,8 +119,9 @@ if __name__ == "__main__":
         os.makedirs(args.outf)
     best_acc = 85  #2 initialize best test accuracy
     print("Start Training, Resnet-18!")  
-    with open("acc.txt", "w") as f:
-        with open("log.txt", "w")as f2:
+    print("Open files to save!")
+    with open(args.outf + os.sep + "acc.txt", "w") as f:
+        with open(args.outf + os.sep + "log.txt", "w")as f2:
             for epoch in range(pre_epoch, EPOCH):
                 print('\nEpoch: %d' % (epoch + 1))
                 net.train()
@@ -167,12 +172,12 @@ if __name__ == "__main__":
                     # Write the results of each test in real time to acc.txt file
                     print('Saving model...')
                     torch.save(net.state_dict(), '%s/net_%03d.pth' % (args.outf, epoch + 1))
-                    f.write("EPOCH=%03d,Accuracy= %.3f%%" % (epoch + 1, acc))
+                    f.write("EPOCH=%03d, Accuracy= %.3f%%" % (epoch + 1, acc))
                     f.write('\n')
                     f.flush()
                     # Record the best test classification accuracy and write it to the BEST_ACC.TXT file
                     if acc > best_acc:
-                        f3 = open("best_acc.txt", "w")
+                        f3 = open(args.outf + os.sep + "best_acc.txt", "w")
                         f3.write("EPOCH=%d,best_acc= %.3f%%" % (epoch + 1, acc))
                         f3.close()
                         best_acc = acc
