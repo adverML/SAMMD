@@ -80,7 +80,7 @@ parser.add_argument('--net', type=str, default="resnet18", help="decide which ne
 parser.add_argument('--dataset', type=str, default="cifar10", help="choose from cifar10,svhn")
 parser.add_argument('--drop_rate', type=float,default=0.0, help='WRN drop rate')
 parser.add_argument('--attack_method', type=str,default="dat", help = "choose form: dat and trades")
-parser.add_argument('--model_path', default='./../Res18_model/net_150.pth', help='model for white-box attack evaluation')
+parser.add_argument('--model_path', default='./Res18_model/net_150.pth', help='model for white-box attack evaluation')
 parser.add_argument('--method',type=str,default='dat',help='select attack setting following DAT or TRADES')
 
 args = parser.parse_args()
@@ -105,23 +105,14 @@ if args.net == "resnet34":
 
 
 ckpt = torch.load(args.model_path)
-
-# import pdb; pdb.set_trace()
-
 model.load_state_dict(ckpt)
 
-# from collections import OrderedDict
-# new_state_dict = OrderedDict()
-# for k, v in checkpoint[keyword].items():
-#     name = k[7:] # remove `module.`
-#     new_state_dict[name] = v
-# # print(net)
 
 model.eval()
 print('==> Generate adversarial sample')
 
 
-PATH_DATA='./Adv_data/cifar10/RN18'
+PATH_DATA='./adv/Adv_data/cifar10/RN18'
 
 
 X_adv=attack.adv_generate(model, test_loader, perturb_steps=20, epsilon=8./255, step_size=8./255 / 10, loss_fn="cent", category="Madry", rand_init=True)

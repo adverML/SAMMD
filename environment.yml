@@ -1,0 +1,4 @@
+name: sammcuda10
+channels:
+  - defaults
+prefix: /home/lorenzp/.conda/envs/sammcuda10
