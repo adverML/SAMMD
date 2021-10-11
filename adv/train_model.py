@@ -103,7 +103,7 @@ testloader = torch.utils.data.DataLoader(testset, batch_size=128, shuffle=False,
 '''
 # train
 if __name__ == "__main__":
-    # define-ResNet
+    # define-ResNetpz
     #net = ResNet34().to(device)
     net = ResNet18().to(device)
 

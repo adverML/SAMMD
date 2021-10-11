@@ -111,9 +111,7 @@ model.load_state_dict(ckpt)
 model.eval()
 print('==> Generate adversarial sample')
 
-
 PATH_DATA='./adv/Adv_data/cifar10/RN18'
-
 
 X_adv=attack.adv_generate(model, test_loader, perturb_steps=20, epsilon=8./255, step_size=8./255 / 10, loss_fn="cent", category="Madry", rand_init=True)
 os.makedirs(PATH_DATA)
