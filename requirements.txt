@@ -9,6 +9,7 @@ ca-certificates=2021.9.30=h06a4308_1
 certifi=2021.5.30=py37h06a4308_0
 cffi=1.14.0=py37h2e261b9_0
 cudatoolkit=10.0.130=0
+cudnn=7.6.0=cuda10.0_0
 freetype=2.10.4=h5ab3b9f_0
 freqopttest=0.1.0=pypi_0
 future=0.18.2=pypi_0
